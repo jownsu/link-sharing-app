@@ -21,7 +21,11 @@ const config: Config = {
 				grey: "#737373",
 				light_grey: "#FAFAFA",
 				white: "#FFFFFF",
-				red: "#FF3939"
+				red: "#FF3939",
+				borders: "#D9D9D9"
+			},
+			boxShadow: {
+				drop_primary: "0 0 3.2rem 0 rgba(99, 60, 255, .25)"
 			}
 		}
 	},

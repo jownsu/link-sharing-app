@@ -18,7 +18,7 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<link rel="icon" href="/favicon-32x32.png" sizes="any" />
-			<body className={instrument_sans.className}>
+			<body className={`${instrument_sans.className} bg-white md:bg-light_grey`}>
 				<QueryClientProvider>{children}</QueryClientProvider>
 			</body>
 		</html>
