@@ -1,12 +1,13 @@
 "use client";
 
-import Link from "next/link";
-import { SubmitHandler, useForm } from "react-hook-form";
+import Button from "@/app/_components/Button";
 import MailIcon from "@/public/icons/icon-email.svg";
 import PasswordIcon from "@/public/icons/icon-password.svg";
-import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import classNames from "classnames";
+import Link from "next/link";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { z } from "zod";
 
 export const loginSchema = z.object({
     email: z.string().trim().min(1, "Can't be empty").max(255).email(),
@@ -90,12 +91,9 @@ const LoginForm = () => {
                     )}
                 </div>
             </div>
-            <button
-                type="submit"
-                className="mb-[2.4rem] h-[4.6rem] rounded-[.8rem] bg-primary font-semibold text-white duration-200 hover:bg-primary_light"
-            >
+            <Button size="full" className="mb-[2.4rem]">
                 Login
-            </button>
+            </Button>
             <p className="flex flex-col text-center text-grey md:flex-row md:justify-center md:gap-[.5rem]">
                 Don&apos;t have an account?{" "}
                 <Link href="/register" className="text-primary">
