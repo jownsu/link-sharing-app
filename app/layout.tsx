@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Instrument_Sans } from "next/font/google";
-import "./globals.css";
 import QueryClientProvider from "./_utils/QueryClientProvider";
+import "./globals.css";
 
 const instrument_sans = Instrument_Sans({ subsets: ["latin"] });
 
@@ -18,7 +18,7 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<link rel="icon" href="/favicon-32x32.png" sizes="any" />
-			<body className={`${instrument_sans.className} bg-white md:bg-light_grey`}>
+			<body className={instrument_sans.className}>
 				<QueryClientProvider>{children}</QueryClientProvider>
 			</body>
 		</html>
