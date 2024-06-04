@@ -1,6 +1,9 @@
+import DevlinkLogo from "./DevlinkLogo";
 
 const NavBar = () => {
-    return <div>NavBar</div>;
+    return <nav>
+        <DevlinkLogo />
+    </nav>;
 };
 
 export default NavBar;
