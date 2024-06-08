@@ -28,4 +28,8 @@ body {
 	.text-balance {
 		text-wrap: balance;
 	}
+
+	.container {
+        @apply xl:!max-w-[1392px] max-w-full;
+    }
 }

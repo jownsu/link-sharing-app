@@ -1,3 +1,5 @@
+import LinkList from "./_components/LinkList";
+
 const LinkPage = () => {
     return (
         <div>
@@ -6,7 +8,7 @@ const LinkPage = () => {
                 Add/edit/remove links below and then share all your profiles
                 with the world!
             </p>
-            <button>+ Add new link</button>
+            <LinkList />
         </div>
     );
 };
