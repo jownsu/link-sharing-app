@@ -3,8 +3,8 @@ import LinkList from "./_components/LinkList";
 const LinkPage = () => {
     return (
         <div className="container py-[2.4rem]">
-            <div className="rounded-[1.2rem] p-[2.4rem]">
-                <h1 className="text-[2.4rem] font-bold leading-[150%] text-dark_grey">
+            <div className="rounded-[1.2rem] bg-white p-[2.4rem]">
+                <h1 className="text-[2.4rem] font-bold leading-[150%] text-dark_grey md:text-[3.2rem]">
                     Customize your links
                 </h1>
                 <p className="mb-[4.1rem] text-grey">

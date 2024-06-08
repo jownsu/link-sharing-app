@@ -7,7 +7,7 @@ interface Props
         VariantProps<typeof btnVariants> {}
 
 export const btnVariants = cva(
-    "h-[4.6rem] rounded-[.8rem] disabled:opacity-25 font-semibold duration-200",
+    "h-[4.6rem] rounded-[.8rem] disabled:opacity-25 font-semibold duration-200 px-[2.7rem]",
     {
         variants: {
             variant: {
@@ -15,7 +15,7 @@ export const btnVariants = cva(
                 outline: "bg-white border border-primary text-primary hover:bg-primary_lighter"
             },
             size: {
-                default: "w-fit px-[2.7rem]",
+                default: "w-fit",
                 full: "w-full"
             }
         },
