@@ -26,17 +26,17 @@ export const btnVariants = cva(
     }
 );
 
-const Button = forwardRef<HTMLButtonElement, Props>(function Button(
-    { className, size, variant, ...rest }: Props,
-    ref
-) {
-    return (
-        <button
-            ref={ref}
-            className={cn(btnVariants({ variant, size, className }))}
-            {...rest}
-        />
-    );
-});
+const Button = forwardRef<HTMLButtonElement, Props>(
+    ({ className, size, variant, ...rest }, ref) => {
+        return (
+            <button
+                ref={ref}
+                className={cn(btnVariants({ variant, size, className }))}
+                {...rest}
+            />
+        );
+    }
+);
+Button.displayName = "Button";
 
 export default Button;
