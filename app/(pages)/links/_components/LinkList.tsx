@@ -1,11 +1,13 @@
 "use client";
 
-import { useState } from "react";
-import EmptyIcon from "@/public/icons/illustration-empty.svg";
 import Button from "@/app/_components/Button";
+import { DevLink } from "@/app/_constants/constants";
+import EmptyIcon from "@/public/icons/illustration-empty.svg";
+import { useState } from "react";
+import DevLinkItem from "./DevLinkItem";
 
 const LinkList = () => {
-    const [links, setLinks] = useState([]);
+    const [dev_links, setDevLinks] = useState<DevLink[]>([]);
 
     return (
         <div className="flex flex-1 flex-col">
@@ -14,12 +16,24 @@ const LinkList = () => {
                 size={"full"}
                 type="submit"
                 className="mb-[2.4rem]"
+                onClick={() =>
+                    setDevLinks((prev_state) => [
+                        ...prev_state,
+                        { id: Math.floor(Math.random() * 9999999), link: "", platform: "github" }
+                    ])
+                }
             >
                 + Add new link
             </Button>
-            {!!links.length && <p>Render List</p>}
+            {!!dev_links.length && (
+                <ul className="flex-1 flex flex-col gap-[2.4rem] mb-[2.4rem]"> 
+                    {dev_links.map((link, index) => (
+                        <DevLinkItem key={link.id} link={link} index={index} />
+                    ))}
+                </ul>
+            )}
 
-            {!links.length && (
+            {!dev_links.length && (
                 <div className="mb-[2.4rem] flex flex-1 flex-col justify-center rounded-[1.2rem] bg-light_grey px-[2rem] py-[4.6rem] text-center">
                     <EmptyIcon className="mx-auto mb-[2.4rem] h-[8rem] w-[12.477rem]" />
                     <h2 className="mb-[2.2rem] text-[2.4rem] font-bold text-dark_grey md:text-[3.2rem]">
@@ -35,7 +49,7 @@ const LinkList = () => {
             )}
 
             <div className="mb-[2.4rem] h-[.1rem] w-[calc(100%_+_4.8rem)] translate-x-[-2.4rem] bg-borders"></div>
-            <Button size="full" disabled className="ml-auto w-fit">
+            <Button size="full" disabled className="md:ml-auto md:w-fit">
                 Save
             </Button>
         </div>
