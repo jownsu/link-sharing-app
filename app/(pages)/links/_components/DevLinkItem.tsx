@@ -11,7 +11,7 @@ import {
     SelectTrigger,
     SelectValue
 } from "@/app/_components/Select";
-import Icon from "@/app/_components/Icon";
+import PlatformIcon from "./PlatformIcon";
 
 interface Props {
     link: DevLink;
@@ -46,12 +46,7 @@ const DevLinkItem = ({ link, index }: Props) => {
                                 className="border-b-borders px-0 py-[1.2rem] text-[1.6rem] text-dark_grey [&:not(:last-of-type)]:border-b"
                             >
                                 <div className="flex items-center gap-[1rem]">
-                                    <Icon
-                                        path="icons/platform_icon_sprite.svg"
-                                        id={platform.icon}
-                                        height={16}
-                                        width={16}
-                                    />
+                                    <PlatformIcon platform={platform.icon} />
                                     {platform.label}
                                 </div>
                             </SelectItem>
