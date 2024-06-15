@@ -1,13 +1,13 @@
 "use client";
 
 import Button from "@/app/_components/Button";
-import { DevLink } from "@/app/_constants/constants";
+import useDevLinkStore from "@/app/_store/devlink.store";
 import EmptyIcon from "@/public/icons/illustration-empty.svg";
-import { useState } from "react";
 import DevLinkItem from "./DevLinkItem";
 
 const LinkList = () => {
-    const [dev_links, setDevLinks] = useState<DevLink[]>([]);
+    const devlinks = useDevLinkStore((state) => state.devlinks);
+    const addDevLink = useDevLinkStore((state) => state.addDevLink);
 
     return (
         <div className="flex flex-1 flex-col overflow-hidden">
@@ -16,24 +16,19 @@ const LinkList = () => {
                 size={"full"}
                 type="submit"
                 className="mb-[2.4rem]"
-                onClick={() =>
-                    setDevLinks((prev_state) => [
-                        ...prev_state,
-                        { id: Math.floor(Math.random() * 9999999), link: "", platform: "github" }
-                    ])
-                }
+                onClick={addDevLink}
             >
                 + Add new link
             </Button>
-            {!!dev_links.length && (
-                <ul className="flex-1 flex flex-col gap-[2.4rem] mb-[2.4rem] overflow-y-auto"> 
-                    {dev_links.map((link, index) => (
+            {!!devlinks.length && (
+                <ul className="mb-[2.4rem] flex flex-1 flex-col gap-[2.4rem] overflow-y-auto">
+                    {devlinks.map((link, index) => (
                         <DevLinkItem key={link.id} link={link} index={index} />
                     ))}
                 </ul>
             )}
 
-            {!dev_links.length && (
+            {!devlinks.length && (
                 <div className="mb-[2.4rem] flex flex-1 flex-col justify-center rounded-[1.2rem] bg-light_grey px-[2rem] py-[4.6rem] text-center">
                     <EmptyIcon className="mx-auto mb-[2.4rem] h-[8rem] w-[12.477rem]" />
                     <h2 className="mb-[2.2rem] text-[2.4rem] font-bold text-dark_grey md:text-[3.2rem]">

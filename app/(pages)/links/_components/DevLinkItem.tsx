@@ -1,9 +1,11 @@
+"use client";
+
 import { DevLink } from "@/app/_constants/constants";
 import LinkIcon from "@/public/icons/icon-link.svg";
 import DragIcon from "@/public/icons/icon-drag-and-drop.svg";
 import classNames from "classnames";
 import { Platforms } from "@/app/_constants/constants";
-
+import useDevLinkStore from "@/app/_store/devlink.store";
 import {
     Select,
     SelectContent,
@@ -19,12 +21,15 @@ interface Props {
 }
 
 const DevLinkItem = ({ link, index }: Props) => {
+
+    const removeDevLink = useDevLinkStore(state => state.removeDevLink);
+
     return (
         <li key={link.id} className="rounded-[1.2rem] bg-light_grey p-[2rem]">
             <div className="mb-[1rem] flex items-center gap-[1rem] text-grey">
                 <DragIcon />{" "}
                 <span className="mr-auto font-bold">Link #{index + 1}</span>
-                <button type="button">Remove</button>
+                <button type="button" onClick={() => removeDevLink(link.id)}>Remove</button>
             </div>
 
             <div className="mb-[.5rem]">
