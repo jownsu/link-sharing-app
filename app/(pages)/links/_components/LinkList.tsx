@@ -10,7 +10,7 @@ const LinkList = () => {
     const [dev_links, setDevLinks] = useState<DevLink[]>([]);
 
     return (
-        <div className="flex flex-1 flex-col">
+        <div className="flex flex-1 flex-col overflow-hidden">
             <Button
                 variant={"outline"}
                 size={"full"}
@@ -26,7 +26,7 @@ const LinkList = () => {
                 + Add new link
             </Button>
             {!!dev_links.length && (
-                <ul className="flex-1 flex flex-col gap-[2.4rem] mb-[2.4rem]"> 
+                <ul className="flex-1 flex flex-col gap-[2.4rem] mb-[2.4rem] overflow-y-auto"> 
                     {dev_links.map((link, index) => (
                         <DevLinkItem key={link.id} link={link} index={index} />
                     ))}

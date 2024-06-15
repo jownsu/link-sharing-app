@@ -3,7 +3,7 @@ import PhoneIllustration from "@/public/icons/illustration-phone-mockup.svg";
 
 const LinkPage = () => {
     return (
-        <div className="container flex flex-1 gap-[2.4rem] py-[2.4rem]">
+        <div className="container flex flex-1 gap-[2.4rem] py-[2.4rem] min-h-full">
             <div className="hidden w-[56rem] place-items-center rounded-[1.2rem] bg-white lg:grid">
                 <PhoneIllustration className="h-[63.1rem] w-[30.7rem]" />
             </div>
