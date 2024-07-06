@@ -7,13 +7,12 @@ import {
     SelectTrigger,
     SelectValue
 } from "@/app/_components/Select";
-import { DevLink, DevlinkForm, Platforms } from "@/app/_constants/constants";
+import { DevLink, DevlinkForm, Platforms, PlatformType } from "@/app/_constants/constants";
 import DragIcon from "@/public/icons/icon-drag-and-drop.svg";
 import LinkIcon from "@/public/icons/icon-link.svg";
-import classNames from "classnames";
+import clsx from "clsx";
 import { Controller, useFormContext } from "react-hook-form";
 import PlatformIcon from "./PlatformIcon";
-import clsx from "clsx";
 
 interface Props {
     link: DevLink;
@@ -54,7 +53,7 @@ const DevLinkItem = ({ link, index, remove }: Props) => {
                                 <SelectValue />
                             </SelectTrigger>
                             <SelectContent className="z-50 bg-white px-[1.6rem]">
-                                {Object.values(Platforms).map((platform) => (
+                                {Object.entries(Platforms).map(([key, platform]) => (
                                     <SelectItem
                                         key={platform.id}
                                         value={platform.icon}
@@ -62,7 +61,7 @@ const DevLinkItem = ({ link, index, remove }: Props) => {
                                     >
                                         <div className="flex items-center gap-[1rem]">
                                             <PlatformIcon
-                                                platform={platform.icon}
+                                                platform={key as PlatformType}
                                             />
                                             {platform.label}
                                         </div>

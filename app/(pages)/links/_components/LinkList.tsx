@@ -5,8 +5,11 @@ import { DevlinkForm } from "@/app/_constants/constants";
 import EmptyIcon from "@/public/icons/illustration-empty.svg";
 import { FormProvider, useFieldArray, useForm } from "react-hook-form";
 import DevLinkItem from "./DevLinkItem";
+import useDevLinkStore from "@/app/_store/devlink.store";
 
 const LinkList = () => {
+
+    const updateDevLinks = useDevLinkStore(state => state.updateDevLinks);
     const methods = useForm<DevlinkForm>({
         defaultValues: {
             devlinks: []
@@ -23,7 +26,7 @@ const LinkList = () => {
     });
 
     const onSubmit = (data: DevlinkForm) => {
-        console.log(data);
+        updateDevLinks(data.devlinks);
     };
 
     return (
