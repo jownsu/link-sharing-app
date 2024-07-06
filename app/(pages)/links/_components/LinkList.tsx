@@ -1,17 +1,13 @@
 "use client";
 
 import Button from "@/app/_components/Button";
-import { DevLink } from "@/app/_constants/constants";
+import { DevlinkForm } from "@/app/_constants/constants";
 import EmptyIcon from "@/public/icons/illustration-empty.svg";
 import { FormProvider, useFieldArray, useForm } from "react-hook-form";
 import DevLinkItem from "./DevLinkItem";
 
-type FormValues = {
-    devlinks: DevLink[];
-};
-
 const LinkList = () => {
-    const methods = useForm<FormValues>({
+    const methods = useForm<DevlinkForm>({
         defaultValues: {
             devlinks: []
         }
@@ -26,7 +22,7 @@ const LinkList = () => {
         name: "devlinks"
     });
 
-    const onSubmit = (data: FormValues) => {
+    const onSubmit = (data: DevlinkForm) => {
         console.log(data);
     };
 

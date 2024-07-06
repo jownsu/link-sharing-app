@@ -84,3 +84,8 @@ export interface DevLink {
     platform: PlatformType,
     link: string
 }
+
+
+export type DevlinkForm = {
+    devlinks: DevLink[];
+};

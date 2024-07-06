@@ -7,12 +7,13 @@ import {
     SelectTrigger,
     SelectValue
 } from "@/app/_components/Select";
-import { DevLink, Platforms } from "@/app/_constants/constants";
+import { DevLink, DevlinkForm, Platforms } from "@/app/_constants/constants";
 import DragIcon from "@/public/icons/icon-drag-and-drop.svg";
 import LinkIcon from "@/public/icons/icon-link.svg";
 import classNames from "classnames";
 import { Controller, useFormContext } from "react-hook-form";
 import PlatformIcon from "./PlatformIcon";
+import clsx from "clsx";
 
 interface Props {
     link: DevLink;
@@ -21,7 +22,7 @@ interface Props {
 }
 
 const DevLinkItem = ({ link, index, remove }: Props) => {
-    const { register, control } = useFormContext();
+    const { register, control, formState: { errors } } = useFormContext<DevlinkForm>();
 
     return (
         <li key={link.id} className="rounded-[1.2rem] bg-light_grey p-[2rem]">
@@ -43,7 +44,7 @@ const DevLinkItem = ({ link, index, remove }: Props) => {
 
                 <Controller
                     control={control}
-                    name={`devlinks[${index}].platform`}
+                    name={`devlinks.${index}.platform`}
                     render={({ field: { onChange, value } }) => (
                         <Select
                             value={value}
@@ -81,17 +82,28 @@ const DevLinkItem = ({ link, index, remove }: Props) => {
                     Link
                 </label>
                 <div
-                    className={classNames(
-                        "flex h-[4.8rem] w-full items-center gap-[1rem] rounded-[.8rem] border border-borders px-[1rem] has-[input:focus]:border-primary has-[input:focus]:shadow-drop_primary"
+                    className={clsx(
+                        "flex h-[4.8rem] w-full items-center gap-[1rem] rounded-[.8rem] border border-borders px-[1rem] has-[input:focus]:border-primary has-[input:focus]:shadow-drop_primary", {
+                            ["border-red"]: errors.devlinks?.[index]?.link
+                        }
                     )}
                 >
                     <LinkIcon className="shrink-0" />
                     <input
-                        {...register(`devlinks[${index}].link`)}
+                        {...register(`devlinks.${index}.link`, {
+                            required: "Can't be empty",
+                            pattern: {
+                                value: /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i,
+                                message: "Please check the URL"
+                            }
+                        })}
                         className="input:-internal-autofill-selected: w-full bg-transparent text-dark_grey outline-none placeholder:text-dark_grey placeholder:opacity-50"
-                        type="text"
+                        type="url"
                         placeholder="e.g https://github.com/jownsu"
                     />
+                    {
+                        errors.devlinks?.[index]?.link && <p className="text-[1.2rem] text-red text-nowrap">{errors.devlinks?.[index].link.message}</p>
+                    }
                 </div>
             </div>
         </li>
