@@ -101,7 +101,7 @@ const DevLinkItem = ({ link, index, remove }: Props) => {
                         placeholder="e.g https://github.com/jownsu"
                     />
                     {
-                        errors.devlinks?.[index]?.link && <p className="text-[1.2rem] text-red text-nowrap">{errors.devlinks?.[index].link.message}</p>
+                        errors.devlinks?.[index]?.link && <p className="text-[1.2rem] text-red text-nowrap">{errors.devlinks?.[index]?.link?.message}</p>
                     }
                 </div>
             </div>

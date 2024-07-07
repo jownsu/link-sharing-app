@@ -1,11 +1,13 @@
 "use client";
 
 import PreviewLink from "@/app/_components/PreviewLink";
-import useDevLinkStore from "@/app/_store/devlink.store";
+import { DevlinkForm } from "@/app/_constants/constants";
+import { useFormContext } from "react-hook-form";
 
 const PreviewList = () => {
 
-    const devlinks = useDevLinkStore(state => state.devlinks);
+    const { watch } = useFormContext<DevlinkForm>();
+    const devlinks = watch("devlinks");
 
     return (
         <div className="absolute bottom-[5.3rem] left-[50%] flex h-[30rem] max-h-[30rem] w-[23.7rem] -translate-x-1/2 flex-col gap-[2rem] overflow-auto">
