@@ -3,6 +3,7 @@
 import Button from "@/app/_components/Button";
 import { DevlinkForm } from "@/app/_constants/constants";
 import EmptyIcon from "@/public/icons/illustration-empty.svg";
+import { DragDropContext, Droppable, DropResult } from "@hello-pangea/dnd";
 import { useFieldArray, useFormContext } from "react-hook-form";
 import DevLinkItem from "./DevLinkItem";
 
@@ -19,7 +20,7 @@ const LinkList = () => {
     });
 
     const onSubmit = (data: DevlinkForm) => {
-        console.log(data.devlinks)
+        console.log(data.devlinks);
     };
 
     const onAddNewLink = () => {
@@ -30,6 +31,17 @@ const LinkList = () => {
             platform: "github",
             link: ""
         });
+    };
+
+    const onDragEnd = (result: DropResult) => {
+        if (!result.destination) return;
+        const devlinks = methods.getValues("devlinks");
+
+        const items = Array.from(devlinks);
+        const [reorderedItem] = items.splice(result.source.index, 1);
+        items.splice(result.destination.index, 0, reorderedItem);
+
+        methods.setValue("devlinks", items);
     };
 
     return (
@@ -49,16 +61,27 @@ const LinkList = () => {
             </Button>
 
             {!!devlinks.length && (
-                <ul className="mb-[2.4rem] flex flex-1 flex-col gap-[2.4rem] overflow-y-auto">
-                    {devlinks.map((link, index) => (
-                        <DevLinkItem
-                            key={link.id}
-                            link={link}
-                            index={index}
-                            remove={remove}
-                        />
-                    ))}
-                </ul>
+                <DragDropContext onDragEnd={onDragEnd}>
+                    <Droppable droppableId="devlinks">
+                        {(provided) => (
+                            <ul
+                                {...provided.droppableProps}
+                                ref={provided.innerRef}
+                                className="mb-[2.4rem] flex flex-1 flex-col gap-[2.4rem] overflow-y-auto"
+                            >
+                                {devlinks.map((link, index) => (
+                                    <DevLinkItem
+                                        key={link.id}
+                                        link={link}
+                                        index={index}
+                                        remove={remove}
+                                    />
+                                ))}
+                                {provided.placeholder}
+                            </ul>
+                        )}
+                    </Droppable>
+                </DragDropContext>
             )}
 
             {!devlinks.length && (
