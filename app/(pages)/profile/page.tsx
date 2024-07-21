@@ -1,3 +1,4 @@
+import Button from "@/app/_components/Button";
 import ImageIcon from "@/public/icons/icon-upload-image.svg";
 
 const ProfilePage = () => {
@@ -84,7 +85,15 @@ const ProfilePage = () => {
                 </div>
             </div>
 
-            <div className="mb-[2.4rem] h-[1rem] w-[calc(100%_+_4.8rem)] translate-x-[-2.4rem] bg-red"></div>
+            <div className="mb-[2.4rem] mt-auto h-[.1rem] w-[calc(100%_+_4.8rem)] translate-x-[-2.4rem] bg-borders"></div>
+
+            <Button
+                size="full"
+                className="flex-shrink-0 md:ml-auto md:w-fit"
+                type="submit"
+            >
+                Save
+            </Button>
         </div>
     );
 };
