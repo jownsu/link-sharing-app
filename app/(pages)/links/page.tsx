@@ -2,7 +2,7 @@ import LinkList from "./_components/LinkList";
 
 const LinkPage = () => {
     return (
-        <div className="flex h-full flex-1 flex-col">
+        <div className="flex min-h-full flex-1 flex-col">
             <h1 className="text-[2.4rem] font-bold leading-[150%] text-dark_grey md:text-[3.2rem]">
                 Customize your links
             </h1>

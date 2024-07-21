@@ -5,7 +5,7 @@ import NavLink from "./NavLink";
 
 const NavBar = () => {
     return (
-        <nav className="container bg-white md:bg-transparent md:pt-[2.4rem]">
+        <nav className="container bg-white md:bg-light_grey md:pt-[2.4rem] fixed top-0 left-[50%] translate-x-[-50%]">
             <div className="flex items-center rounded-[1.2rem] bg-white px-[2.4rem] py-[1.6rem]">
                 <DevlinkLogo className="mr-auto flex-shrink-0" size="sm" />
                 <NavLink path="links" />

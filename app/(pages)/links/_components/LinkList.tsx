@@ -46,14 +46,14 @@ const LinkList = () => {
 
     return (
         <form
-            className="flex flex-1 flex-col overflow-hidden"
+            className="flex flex-col flex-1 h-full"
             onSubmit={methods.handleSubmit(onSubmit)}
         >
             <Button
                 variant={"outline"}
                 size={"full"}
                 type="button"
-                className="mb-[2.4rem]"
+                className="mb-[2.4rem] flex-shrink-0"
                 onClick={onAddNewLink}
                 disabled={devlinks.length >= 5}
             >
@@ -104,7 +104,7 @@ const LinkList = () => {
             <Button
                 size="full"
                 disabled={!devlinks.length}
-                className="md:ml-auto md:w-fit"
+                className="md:ml-auto md:w-fit flex-shrink-0"
                 type="submit"
             >
                 Save

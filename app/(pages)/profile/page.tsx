@@ -10,7 +10,7 @@ const ProfilePage = () => {
                 Add your details to create a personal touch to your profile.
             </p>
 
-            <div className="rounded-[1.2rem] bg-light_grey p-[2rem]">
+            <div className="mb-[2.4rem] rounded-[1.2rem] bg-light_grey p-[2rem]">
                 <p className="mb-[1.6rem] text-grey">Profile picture</p>
                 <label
                     htmlFor="profile_picture"
@@ -32,6 +32,59 @@ const ProfilePage = () => {
                     Image must be below 1024x1024px. Use PNG or JPG format.
                 </p>
             </div>
+
+            <div className="flex flex-col gap-[.6rem] rounded-[1.2rem] bg-light_grey p-[2rem]">
+                <div>
+                    <label
+                        htmlFor="first_name"
+                        className="mb-[.5rem] inline-block text-[1.2rem] text-dark_grey"
+                    >
+                        First name*
+                    </label>
+                    <div className="flex h-[4.8rem] w-full items-center gap-[1rem] rounded-[.8rem] border border-borders px-[1rem] has-[input:focus]:border-primary has-[input:focus]:shadow-drop_primary">
+                        <input
+                            id="first_name"
+                            className="input:-internal-autofill-selected: w-full bg-transparent text-dark_grey outline-none placeholder:text-dark_grey placeholder:opacity-50"
+                            type="text"
+                            placeholder="e.g John"
+                        />
+                    </div>
+                </div>
+                <div>
+                    <label
+                        htmlFor="first_name"
+                        className="mb-[.5rem] inline-block text-[1.2rem] text-dark_grey"
+                    >
+                        Last name*
+                    </label>
+                    <div className="flex h-[4.8rem] w-full items-center gap-[1rem] rounded-[.8rem] border border-borders px-[1rem] has-[input:focus]:border-primary has-[input:focus]:shadow-drop_primary">
+                        <input
+                            id="first_name"
+                            className="input:-internal-autofill-selected: w-full bg-transparent text-dark_grey outline-none placeholder:text-dark_grey placeholder:opacity-50"
+                            type="text"
+                            placeholder="e.g Appleseed"
+                        />
+                    </div>
+                </div>
+                <div>
+                    <label
+                        htmlFor="first_name"
+                        className="mb-[.5rem] inline-block text-[1.2rem] text-dark_grey"
+                    >
+                        Email
+                    </label>
+                    <div className="flex h-[4.8rem] w-full items-center gap-[1rem] rounded-[.8rem] border border-borders px-[1rem] has-[input:focus]:border-primary has-[input:focus]:shadow-drop_primary">
+                        <input
+                            id="first_name"
+                            className="input:-internal-autofill-selected: w-full bg-transparent text-dark_grey outline-none placeholder:text-dark_grey placeholder:opacity-50"
+                            type="email"
+                            placeholder="e.g email@example.com"
+                        />
+                    </div>
+                </div>
+            </div>
+
+            <div className="mb-[2.4rem] h-[1rem] w-[calc(100%_+_4.8rem)] translate-x-[-2.4rem] bg-red"></div>
         </div>
     );
 };
