@@ -2,6 +2,7 @@ import NavBar from "../_components/NavBar";
 import DevlinkFormProvider from "../_providers/devlink_form_provider";
 import PhoneIllustration from "@/public/icons/illustration-phone-mockup.svg";
 import PreviewList from "./links/_components/PreviewList";
+import PreviewHead from "./links/_components/PreviewHead";
 import "../globals.css";
 
 export default function RootLayout({
@@ -17,6 +18,7 @@ export default function RootLayout({
                     <div className="hidden w-[56rem] place-items-center rounded-[1.2rem] bg-white lg:grid fixed h-[87vh]">
                         <div className="relative h-[63.1rem] w-[30.7rem]">
                             <PhoneIllustration className="h-full w-full" />
+                            <PreviewHead />
                             <PreviewList />
                         </div>
                     </div>

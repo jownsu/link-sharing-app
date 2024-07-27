@@ -81,4 +81,7 @@ export interface DevLink {
 
 export type DevlinkForm = {
     devlinks: DevLink[];
+    first_name: string;
+    last_name: string;
+    email: string;
 };

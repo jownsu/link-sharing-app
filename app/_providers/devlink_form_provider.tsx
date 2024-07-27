@@ -8,6 +8,7 @@ interface Props {
     children: ReactNode;
 }
 
+
 const DevlinkFormProvider = ({ children }: Props) => {
     const methods = useForm<DevlinkForm>({
         defaultValues: {
@@ -15,7 +16,20 @@ const DevlinkFormProvider = ({ children }: Props) => {
         }
     });
 
-    return <FormProvider {...methods}>{children}</FormProvider>;
+    const onSubmit = (data: DevlinkForm) => {
+        console.log(data);
+    };
+
+    return (
+        <FormProvider {...methods}>
+            <form
+                className="flex h-full flex-1 flex-col"
+                onSubmit={methods.handleSubmit(onSubmit)}
+            >
+                {children}
+            </form>
+        </FormProvider>
+    );
 };
 
 export default DevlinkFormProvider;

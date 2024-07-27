@@ -19,10 +19,6 @@ const LinkList = () => {
         name: "devlinks"
     });
 
-    const onSubmit = (data: DevlinkForm) => {
-        console.log(data.devlinks);
-    };
-
     const onAddNewLink = () => {
         if (devlinks.length >= 5) return;
 
@@ -45,10 +41,7 @@ const LinkList = () => {
     };
 
     return (
-        <form
-            className="flex flex-col flex-1 h-full"
-            onSubmit={methods.handleSubmit(onSubmit)}
-        >
+        <div className="flex h-full flex-1 flex-col">
             <Button
                 variant={"outline"}
                 size={"full"}
@@ -104,12 +97,12 @@ const LinkList = () => {
             <Button
                 size="full"
                 disabled={!devlinks.length}
-                className="md:ml-auto md:w-fit flex-shrink-0"
+                className="flex-shrink-0 md:ml-auto md:w-fit"
                 type="submit"
             >
                 Save
             </Button>
-        </form>
+        </div>
     );
 };
 
