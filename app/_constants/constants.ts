@@ -71,7 +71,7 @@ export const Platforms = {
     }
 };
 
-export type PlatformType = keyof typeof Platforms
+export type PlatformType = keyof typeof Platforms;
 
 export interface DevLink {
     id: number;
@@ -84,5 +84,5 @@ export type DevlinkForm = {
     first_name: string;
     last_name: string;
     email: string;
-    profile_picture: string;
+    profile_picture: File[] | null;
 };
