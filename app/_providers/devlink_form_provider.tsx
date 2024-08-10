@@ -1,10 +1,13 @@
 "use client";
 
+import { zodResolver } from "@hookform/resolvers/zod";
 import { ReactNode } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import { DevlinkForm } from "../_constants/constants";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { DevlinkForm } from "../_constants/constants";
+import toast from "react-hot-toast";
+import FloppyDiskIcon from "@/public/icons/icon-changes-saved.svg";
+import clsx from "clsx";
 
 export const formSchema = z.object({
     devlinks: z.array(
@@ -38,11 +41,26 @@ const DevlinkFormProvider = ({ children }: Props) => {
         defaultValues: {
             devlinks: []
         },
-        resolver: zodResolver(formSchema),
+        resolver: zodResolver(formSchema)
     });
 
     const onSubmit = (data: DevlinkForm) => {
         console.log(data);
+        toast.custom(
+            () => (
+                <div
+                    className={clsx(
+                        "flex items-center gap-[.8rem] rounded-[1.2rem] bg-dark_grey px-[2.4rem] py-[1.6rem] font-semibold text-light_grey"
+                    )}
+                >
+                    <FloppyDiskIcon className="h-[2rem] w-[2rem]" />
+                    <p>Your changes have been successfully saved!</p>
+                </div>
+            ),
+            {
+                position: "bottom-center"
+            }
+        );
     };
 
     return (
