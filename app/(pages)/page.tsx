@@ -1,12 +1,6 @@
-import React from "react";
-import NavBar from "../_components/NavBar";
-
+import { redirect } from "next/navigation";
 const HomePage = () => {
-    return (
-        <div>
-            <p className="text-[2rem]">Home Page</p>
-        </div>
-    );
+    redirect('/links')
 };
 
 export default HomePage;

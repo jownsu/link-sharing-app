@@ -96,7 +96,7 @@ const LinkList = () => {
 
             <Button
                 size="full"
-                disabled={!devlinks.length}
+                disabled={!methods.formState.isValid || devlinks.length <= 0}
                 className="flex-shrink-0 md:ml-auto md:w-fit"
                 type="submit"
             >

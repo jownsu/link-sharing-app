@@ -1,8 +1,8 @@
 import NavBar from "../_components/NavBar";
 import DevlinkFormProvider from "../_providers/devlink_form_provider";
 import PhoneIllustration from "@/public/icons/illustration-phone-mockup.svg";
-import PreviewList from "./links/_components/PreviewList";
-import PreviewHead from "./links/_components/PreviewHead";
+import PreviewList from "../_components/PreviewList";
+import PreviewHead from "../_components/PreviewHead";
 import "../globals.css";
 
 export default function RootLayout({

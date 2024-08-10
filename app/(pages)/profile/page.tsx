@@ -1,6 +1,6 @@
-import Button from "@/app/_components/Button";
 import ProfilePictureForm from "./_components/ProfilePictureForm";
 import ProfileDetailsForm from "./_components/ProfileDetailsForm";
+import SubmitBtn from "./_components/SubmitBtn";
 
 const ProfilePage = () => {
     return (
@@ -16,14 +16,7 @@ const ProfilePage = () => {
             <ProfileDetailsForm />
 
             <div className="mb-[2.4rem] mt-auto h-[.1rem] w-[calc(100%_+_4.8rem)] translate-x-[-2.4rem] bg-borders"></div>
-
-            <Button
-                size="full"
-                className="flex-shrink-0 md:ml-auto md:w-fit"
-                type="submit"
-            >
-                Save
-            </Button>
+            <SubmitBtn />
         </div>
     );
 };

@@ -28,9 +28,7 @@ const ProfileDetailsForm = () => {
                     )}
                 >
                     <input
-                        {...register("first_name", {
-                            required: "Can't be empty"
-                        })}
+                        {...register("first_name")}
                         className="input:-internal-autofill-selected: w-full bg-transparent text-dark_grey outline-none placeholder:text-dark_grey placeholder:opacity-50"
                         type="text"
                         placeholder="e.g John"
@@ -58,9 +56,7 @@ const ProfileDetailsForm = () => {
                     )}
                 >
                     <input
-                        {...register("last_name", {
-                            required: "Can't be empty"
-                        })}
+                        {...register("last_name")}
                         className="input:-internal-autofill-selected: w-full bg-transparent text-dark_grey outline-none placeholder:text-dark_grey placeholder:opacity-50"
                         type="text"
                         placeholder="e.g Appleseed"
@@ -77,7 +73,7 @@ const ProfileDetailsForm = () => {
                     htmlFor="email"
                     className="mb-[.5rem] inline-block text-[1.2rem] text-dark_grey md:shrink-0 md:basis-[24rem] md:text-[1.6rem] md:text-grey lg:basis-0 xl:basis-[24rem]"
                 >
-                    Email
+                    Email*
                 </label>
                 <div
                     className={
@@ -86,10 +82,20 @@ const ProfileDetailsForm = () => {
                 >
                     <input
                         {...register("email")}
-                        className="input:-internal-autofill-selected: w-full bg-transparent text-dark_grey outline-none placeholder:text-dark_grey placeholder:opacity-50"
+                        className={clsx(
+                            "input:-internal-autofill-selected: w-full bg-transparent text-dark_grey outline-none placeholder:text-dark_grey placeholder:opacity-50",
+                            {
+                                ["border-red"]: errors.last_name
+                            }
+                        )}
                         type="email"
                         placeholder="e.g email@example.com"
                     />
+                    {errors.email && (
+                        <p className="text-nowrap text-[1.2rem] text-red">
+                            {errors.email.message}
+                        </p>
+                    )}
                 </div>
             </div>
         </div>

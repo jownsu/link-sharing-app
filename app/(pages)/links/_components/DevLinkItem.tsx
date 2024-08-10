@@ -116,13 +116,7 @@ const DevLinkItem = ({ link, index, remove }: Props) => {
                         >
                             <LinkIcon className="shrink-0" />
                             <input
-                                {...register(`devlinks.${index}.link`, {
-                                    required: "Can't be empty",
-                                    pattern: {
-                                        value: /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i,
-                                        message: "Please check the URL"
-                                    }
-                                })}
+                                {...register(`devlinks.${index}.link`)}
                                 className="input:-internal-autofill-selected: w-full bg-transparent text-dark_grey outline-none placeholder:text-dark_grey placeholder:opacity-50"
                                 type="url"
                                 placeholder="e.g https://github.com/jownsu"
