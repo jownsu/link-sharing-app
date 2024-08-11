@@ -2,12 +2,13 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ReactNode } from "react";
-import { FormProvider, useForm } from "react-hook-form";
+import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 import { DevlinkForm } from "../_constants/constants";
 import toast from "react-hot-toast";
-import FloppyDiskIcon from "@/public/icons/icon-changes-saved.svg";
 import clsx from "clsx";
+import useLocalStorage from "../_hooks/useLocalStorage";
+import FloppyDiskIcon from "@/public/icons/icon-changes-saved.svg";
 
 export const formSchema = z.object({
     devlinks: z.array(
@@ -37,6 +38,7 @@ interface Props {
 }
 
 const DevlinkFormProvider = ({ children }: Props) => {
+    const { saveDevLinks } = useLocalStorage();
     const methods = useForm<DevlinkForm>({
         defaultValues: {
             devlinks: []
@@ -44,7 +46,7 @@ const DevlinkFormProvider = ({ children }: Props) => {
         resolver: zodResolver(formSchema)
     });
 
-    const onSubmit = (data: DevlinkForm) => {
+    const onSubmit: SubmitHandler<DevlinkForm> = (data) => {
         console.log(data);
         toast.custom(
             () => (
@@ -61,6 +63,8 @@ const DevlinkFormProvider = ({ children }: Props) => {
                 position: "bottom-center"
             }
         );
+
+        saveDevLinks("jhoensdigno@gmail.com", data);
     };
 
     return (
