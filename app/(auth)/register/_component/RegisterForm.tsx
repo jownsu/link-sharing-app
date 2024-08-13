@@ -7,7 +7,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import classNames from "classnames";
 import Link from "next/link";
 import { SubmitHandler, useForm } from "react-hook-form";
+import useLocalStorage from "@/app/_hooks/useLocalStorage";
 import { z } from "zod";
+import { useRouter } from "next/navigation";
 
 export const registerSchema = z
     .object({
@@ -20,18 +22,26 @@ export const registerSchema = z
         path: ["confirm_password"]
     });
 
-type RegisterFormData = z.infer<typeof registerSchema>;
+export type RegisterFormData = z.infer<typeof registerSchema>;
 
 const RegisterForm = () => {
+    const { registerUser } = useLocalStorage();
+    const router = useRouter();
     const {
         register,
         handleSubmit,
-        watch,
+        setError,
         formState: { errors }
     } = useForm<RegisterFormData>({ resolver: zodResolver(registerSchema) });
 
-    const onSubmit: SubmitHandler<RegisterFormData> = (data) =>
-        console.log(data);
+    const onSubmit: SubmitHandler<RegisterFormData> = (data) => {
+        if (registerUser(data)) {
+            router.push("/links");
+        } 
+        else {
+            setError("email", { message: "Email already taken" });
+        }
+    };
 
     return (
         <form
