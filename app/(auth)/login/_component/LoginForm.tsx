@@ -1,11 +1,13 @@
 "use client";
 
 import Button from "@/app/_components/Button";
+import useLocalStorage from "@/app/_hooks/useLocalStorage";
 import MailIcon from "@/public/icons/icon-email.svg";
 import PasswordIcon from "@/public/icons/icon-password.svg";
 import { zodResolver } from "@hookform/resolvers/zod";
 import classNames from "classnames";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -14,17 +16,27 @@ export const loginSchema = z.object({
     password: z.string().trim().min(1, "Can't be empty")
 });
 
-type LoginFormData = z.infer<typeof loginSchema>;
+export type LoginFormData = z.infer<typeof loginSchema>;
 
 const LoginForm = () => {
+    const { loginUser } = useLocalStorage();
+    const router = useRouter();
+
     const {
         register,
         handleSubmit,
-        watch,
+        setError,
         formState: { errors }
     } = useForm<LoginFormData>({ resolver: zodResolver(loginSchema) });
 
-    const onSubmit: SubmitHandler<LoginFormData> = (data) => console.log(data);
+    const onSubmit: SubmitHandler<LoginFormData> = (data) => {
+        if(loginUser(data)){
+            router.push("/links");
+        }
+        else {
+            setError("password", { message: "Invalid credentials" });
+        }
+    };
 
     return (
         <form
