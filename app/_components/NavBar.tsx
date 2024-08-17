@@ -1,24 +1,31 @@
 import PreviewIcon from "@/public/icons/icon-preview-header.svg";
+import LogoutLogo from "@/public/icons/logout.svg";
 import Button from "./Button";
 import DevlinkLogo from "./DevlinkLogo";
 import NavLink from "./NavLink";
 
 const NavBar = () => {
     return (
-        <nav className="container bg-white md:bg-light_grey md:pt-[2.4rem] fixed top-0 left-[50%] translate-x-[-50%]">
+        <nav className="container fixed left-[50%] top-0 translate-x-[-50%] bg-white md:bg-light_grey md:pt-[2.4rem]">
             <div className="flex items-center rounded-[1.2rem] bg-white px-[2.4rem] py-[1.6rem]">
                 <DevlinkLogo className="mr-auto flex-shrink-0" size="sm" />
                 <NavLink path="links" />
                 <NavLink path="profile" />
                 <Button
                     variant={"outline"}
-                    className="ml-auto h-[4.2rem] px-[1.6rem] mdF:px-[2.7rem] lg:h-[4.6rem]"
+                    className="ml-auto h-[4.2rem] px-[1.6rem] md:px-[2.7rem] lg:h-[4.6rem]"
                 >
                     <PreviewIcon className="h-[2rem] w-[2rem] md:hidden" />
                     <span className="hidden font-semibold text-primary md:block">
                         Preview
                     </span>
                 </Button>
+                <button
+                    type="button"
+                    className="group ml-[1rem] rounded-full p-[1rem] duration-200 hover:bg-red"
+                >
+                    <LogoutLogo className="size-[1.6rem] fill-red group-hover:fill-white md:size-[2rem] duration-200" />
+                </button>
             </div>
         </nav>
     );
