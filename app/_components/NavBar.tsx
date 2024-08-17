@@ -7,8 +7,16 @@ import DevlinkLogo from "./DevlinkLogo";
 import NavLink from "./NavLink";
 import useLocalStorage from "../_hooks/useLocalStorage";
 import { useRouter } from "next/navigation";
+import { useFormContext } from "react-hook-form";
+import { DevlinkForm } from "../_constants/constants";
 
 const NavBar = () => {
+    const {
+        watch,
+        formState: { isValid }
+    } = useFormContext<DevlinkForm>();
+
+    const devlinks = watch("devlinks");
     const { logoutUser } = useLocalStorage();
     const router = useRouter();
 
@@ -19,8 +27,10 @@ const NavBar = () => {
                 <NavLink path="links" />
                 <NavLink path="profile" />
                 <Button
+                    type="submit"
                     variant={"outline"}
                     className="ml-auto h-[4.2rem] px-[1.6rem] md:px-[2.7rem] lg:h-[4.6rem]"
+                    disabled={!isValid || devlinks.length <= 0}
                 >
                     <PreviewIcon className="h-[2rem] w-[2rem] md:hidden" />
                     <span className="hidden font-semibold text-primary md:block">

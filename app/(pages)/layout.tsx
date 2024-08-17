@@ -13,8 +13,8 @@ export default function RootLayout({
 }>) {
     return (
         <main className="flex min-h-screen flex-col bg-light_grey">
-            <NavBar />
             <DevlinkFormProvider>
+                <NavBar />
                 <div className="container flex min-h-full flex-1 gap-[2.4rem] py-[2.4rem] pt-[13rem]">
                     <div className="fixed hidden h-[87vh] w-[56rem] place-items-center rounded-[1.2rem] bg-white lg:grid">
                         <div className="relative h-[63.1rem] w-[30.7rem]">
