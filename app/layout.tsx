@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Instrument_Sans } from "next/font/google";
-import AuthProvider from "./_utils/AuthProvider";
+import AuthProvider from "./_providers/AuthProvider";
 import "./globals.css";
 
 const instrument_sans = Instrument_Sans({ subsets: ["latin"] });
