@@ -1,3 +1,4 @@
+import { LoginFormData } from "../(auth)/login/_component/LoginForm";
 import { RegisterFormData } from "../(auth)/register/_component/RegisterForm";
 import { DevlinkForm } from "../_constants/constants";
 
@@ -22,9 +23,21 @@ const useLocalStorage = () => {
         return true;
     }
 
+    const loginUser = (data: LoginFormData) => {
+        const users = JSON.parse(localStorage.getItem("devlink_users") || "{}");
+
+        if (users[data.email] === data.password) {
+            localStorage.setItem("devlink_logged_in", "true");
+            return true;
+        }
+
+        return false;
+    }
+
     return {
         saveDevLinks,
-        registerUser
+        registerUser,
+        loginUser
     };
 };
 
