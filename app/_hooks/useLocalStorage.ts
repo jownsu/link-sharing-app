@@ -1,6 +1,7 @@
 import { LoginFormData } from "../(auth)/login/_component/LoginForm";
 import { RegisterFormData } from "../(auth)/register/_component/RegisterForm";
 import { DevlinkForm } from "../_constants/constants";
+import { redirect } from "next/navigation";
 
 const useLocalStorage = () => {
     const saveDevLinks = (email: string, data: DevlinkForm) => {
@@ -21,7 +22,7 @@ const useLocalStorage = () => {
         localStorage.setItem("devlink_logged_in", "true");
 
         return true;
-    }
+    };
 
     const loginUser = (data: LoginFormData) => {
         const users = JSON.parse(localStorage.getItem("devlink_users") || "{}");
@@ -32,12 +33,17 @@ const useLocalStorage = () => {
         }
 
         return false;
-    }
+    };
+
+    const logoutUser = () => {
+        localStorage.removeItem("devlink_logged_in");
+    };
 
     return {
         saveDevLinks,
         registerUser,
-        loginUser
+        loginUser,
+        logoutUser
     };
 };
 
