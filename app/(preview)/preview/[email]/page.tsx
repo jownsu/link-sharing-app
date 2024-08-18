@@ -45,7 +45,7 @@ const PreviewPage = ({ params }: Props) => {
                 </div>
             </div>
 
-            <div className="md:shadow-drop_grey mx-auto max-w-[23.7rem] md:bg-white text-center md:max-w-[34.9rem] md:rounded-[2.4rem] md:px-[5.6rem] md:py-[4.8rem] z-10">
+            <div className="md:shadow-drop_grey mx-auto w-[23.7rem] md:bg-white text-center md:w-[34.9rem] md:rounded-[2.4rem] md:px-[5.6rem] md:py-[4.8rem] z-10">
                 <div className="mb-[5.6rem]">
                     <div className="mx-auto mb-[2.5rem] size-[10.4rem] overflow-hidden rounded-full outline outline-[.4rem] outline-primary">
                         <Image
