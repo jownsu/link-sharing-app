@@ -1,10 +1,13 @@
 import { cva, VariantProps } from "class-variance-authority";
 import { ButtonHTMLAttributes, forwardRef } from "react";
+import { Slot } from "@radix-ui/react-slot";
 import { cn } from "../_utils/helpers";
 
 interface Props
     extends ButtonHTMLAttributes<HTMLButtonElement>,
-        VariantProps<typeof btnVariants> {}
+        VariantProps<typeof btnVariants> {
+            asChild?: boolean;
+        }
 
 export const btnVariants = cva(
     "h-[4.6rem] rounded-[.8rem] disabled:opacity-25 font-semibold duration-200 px-[2.7rem]",
@@ -27,9 +30,10 @@ export const btnVariants = cva(
 );
 
 const Button = forwardRef<HTMLButtonElement, Props>(
-    ({ className, size, variant, ...rest }, ref) => {
+    ({ className, size, variant, asChild = false, ...rest }, ref) => {
+        const Comp = asChild ? Slot : "button";
         return (
-            <button
+            <Comp
                 ref={ref}
                 className={cn(btnVariants({ variant, size, className }))}
                 {...rest}
