@@ -6,6 +6,7 @@ import clsx from "clsx";
 interface Props {
     platform: PlatformType;
     href: string;
+    className?: string;
 }
 
 interface PlatformStyle {
@@ -72,7 +73,7 @@ const Platform: Record<PlatformType, PlatformStyle> = {
     }
 };
 
-const PreviewLink = ({ platform, href }: Props) => {
+const PreviewLink = ({ platform, href, className }: Props) => {
     return (
         <a
             href={href}
@@ -83,7 +84,8 @@ const PreviewLink = ({ platform, href }: Props) => {
                 {
                     ["border border-borders !text-dark_grey"]:
                         Platform[platform].light
-                }
+                },
+                className
             )}
         >
             <PlatformIcon platform={platform} />
