@@ -33,7 +33,8 @@ const config: Config = {
 				placeholder: "#EEEEEE"
 			},
 			boxShadow: {
-				drop_primary: "0 0 3.2rem 0 rgba(99, 60, 255, .25)"
+				drop_primary: "0 0 3.2rem 0 rgba(99, 60, 255, .25)",
+				drop_grey: "0 0 3.2rem 0 rgba(0, 0, 0, .10)",
 			}
 		}
 	},

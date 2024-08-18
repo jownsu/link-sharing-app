@@ -30,13 +30,22 @@ const PreviewPage = ({ params }: Props) => {
 
     return (
         <div>
-            <div className="mb-[6rem] flex gap-[1.6rem] px-[2.4rem] py-[1.6rem]">
-                <Button variant={"outline"} className="flex-1 px-0">
-                    Back to Editor
-                </Button>
-                <Button className="flex-1 px-0">Share Link</Button>
+            <div className="absolute top-0 z-[-10] hidden h-[35.7rem] w-full rounded-b-[3.2rem] bg-primary md:block"></div>
+            <div className="md:p-[2.4rem]">
+                <div className="mb-[6rem] flex gap-[1.6rem] rounded-[1.2rem] px-[2.4rem] py-[1.6rem] md:justify-between md:bg-white">
+                    <Button
+                        variant={"outline"}
+                        className="flex-1 px-0 md:flex-none md:px-[2.7rem]"
+                    >
+                        Back to Editor
+                    </Button>
+                    <Button className="flex-1 px-0 md:flex-none md:px-[2.7rem]">
+                        Share Link
+                    </Button>
+                </div>
             </div>
-            <div className="mx-auto max-w-[23.7rem] text-center">
+
+            <div className="md:shadow-drop_grey mx-auto max-w-[23.7rem] bg-white text-center md:max-w-[34.9rem] md:rounded-[2.4rem] md:px-[5.6rem] md:py-[4.8rem]">
                 <div className="mb-[5.6rem]">
                     <div className="mx-auto mb-[2.5rem] size-[9.6rem] overflow-hidden rounded-full outline outline-[.4rem] outline-primary">
                         <Image
