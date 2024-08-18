@@ -47,7 +47,6 @@ const DevlinkFormProvider = ({ children }: Props) => {
     });
 
     const onSubmit: SubmitHandler<DevlinkForm> = (data) => {
-        console.log(data);
         toast.custom(
             () => (
                 <div
@@ -64,7 +63,7 @@ const DevlinkFormProvider = ({ children }: Props) => {
             }
         );
 
-        saveDevLinks("jhoensdigno@gmail.com", data);
+        saveDevLinks(data);
     };
 
     return (

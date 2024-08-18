@@ -85,4 +85,5 @@ export type DevlinkForm = {
     last_name: string;
     email: string;
     profile_picture: File[] | null;
+    img?: string;
 };

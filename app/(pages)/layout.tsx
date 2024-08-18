@@ -3,7 +3,6 @@ import DevlinkFormProvider from "../_providers/devlink_form_provider";
 import PhoneIllustration from "@/public/icons/illustration-phone-mockup.svg";
 import PreviewList from "../_components/PreviewList";
 import PreviewHead from "../_components/PreviewHead";
-import "../globals.css";
 
 export default function RootLayout({
     children
