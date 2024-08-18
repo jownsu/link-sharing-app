@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Instrument_Sans } from "next/font/google";
 import AuthProvider from "./_providers/AuthProvider";
 import "./globals.css";
+import { Toaster } from "react-hot-toast";
 
 const instrument_sans = Instrument_Sans({ subsets: ["latin"] });
 
@@ -21,6 +22,7 @@ export default function RootLayout({
             <link rel="icon" href="/favicon-32x32.png" sizes="any" />
             <body className={instrument_sans.className}>
                 <AuthProvider>{children}</AuthProvider>
+                <Toaster />
             </body>
         </html>
     );
