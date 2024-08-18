@@ -29,9 +29,9 @@ const PreviewPage = ({ params }: Props) => {
     const { email } = params;
 
     return (
-        <div>
-            <div className="absolute top-0 z-[-10] hidden h-[35.7rem] w-full rounded-b-[3.2rem] bg-primary md:block"></div>
-            <div className="mb-[6rem] md:mb-[10.2rem] md:p-[2.4rem] lg:mb-[8.1rem]">
+        <main className="flex min-h-screen flex-col bg-light_grey">
+            <div className="absolute top-0 hidden h-[35.7rem] w-full rounded-b-[3.2rem] bg-primary md:block"></div>
+            <div className="mb-[6rem] md:mb-[10.2rem] md:p-[2.4rem] lg:mb-[8.1rem] z-[10]">
                 <div className="flex gap-[1.6rem] rounded-[1.2rem] px-[2.4rem] py-[1.6rem] md:justify-between md:bg-white">
                     <Button
                         variant={"outline"}
@@ -45,7 +45,7 @@ const PreviewPage = ({ params }: Props) => {
                 </div>
             </div>
 
-            <div className="md:shadow-drop_grey mx-auto max-w-[23.7rem] bg-white text-center md:max-w-[34.9rem] md:rounded-[2.4rem] md:px-[5.6rem] md:py-[4.8rem]">
+            <div className="md:shadow-drop_grey mx-auto max-w-[23.7rem] md:bg-white text-center md:max-w-[34.9rem] md:rounded-[2.4rem] md:px-[5.6rem] md:py-[4.8rem] z-10">
                 <div className="mb-[5.6rem]">
                     <div className="mx-auto mb-[2.5rem] size-[10.4rem] overflow-hidden rounded-full outline outline-[.4rem] outline-primary">
                         <Image
@@ -72,7 +72,7 @@ const PreviewPage = ({ params }: Props) => {
                     ))}
                 </div>
             </div>
-        </div>
+        </main>
     );
 };
 
