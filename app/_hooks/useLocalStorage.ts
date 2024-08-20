@@ -48,13 +48,18 @@ const useLocalStorage = () => {
     };
 
     const findUserDevlink = (email: string): DevlinkForm | false => {
-        const devlink = JSON.parse(localStorage.getItem("devlinks") || "{}");
 
-        const decoded_email = decodeURIComponent(email);
+        if (typeof window !== "undefined") {
+            const devlink = JSON.parse(localStorage.getItem("devlinks") || "{}");
 
-        if (devlink[decoded_email]) {
-            return devlink[decoded_email];
+            const decoded_email = decodeURIComponent(email);
+    
+            if (devlink[decoded_email]) {
+                return devlink[decoded_email];
+            }
+
         }
+
 
         return false;
     };
