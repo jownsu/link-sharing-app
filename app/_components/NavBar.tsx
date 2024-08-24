@@ -30,6 +30,10 @@ const NavBar = () => {
                     type="submit"
                     variant={"outline"}
                     className="ml-auto h-[4.2rem] px-[1.6rem] md:px-[2.7rem] lg:h-[4.6rem]"
+                    onClick={() => {
+                        const logged_in_email = localStorage.getItem("devlink_logged_in") || "";
+                        router.push(`/preview/${logged_in_email}`);
+                    }}
                     disabled={!isValid || devlinks.length <= 0}
                 >
                     <PreviewIcon className="h-[2rem] w-[2rem] md:hidden" />
