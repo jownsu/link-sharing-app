@@ -52,10 +52,9 @@ const ProfilePictureForm = () => {
                 </span>
             </label>
             <input
-                {...register("profile_picture")}
                 onChange={(event) => {
                     fileToBlob(event.target.files![0]).then((blob) => {
-                        setValue("profile_picture", blob);
+                        setValue("profile_picture", blob.trim());
                     })
                 }}
                 id="profile_picture"
