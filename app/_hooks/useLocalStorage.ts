@@ -9,14 +9,14 @@ const useLocalStorage = () => {
 
         devlinks[logged_in_email] = data;
         localStorage.setItem("devlinks", JSON.stringify(devlinks));
-    }
+    };
 
     const getDevlinks = (): DevlinkForm => {
         const user = localStorage.getItem("devlink_logged_in") || "";
         const devlinks = JSON.parse(localStorage.getItem("devlinks") || "{}");
 
         const devlink = devlinks[user];
-        return devlink || {devlinks: []};
+        return devlink || { devlinks: [] };
     };
 
     const registerUser = (data: RegisterFormData) => {
@@ -49,18 +49,17 @@ const useLocalStorage = () => {
     };
 
     const findUserDevlink = (email: string): DevlinkForm | false => {
-
         if (typeof window !== "undefined") {
-            const devlink = JSON.parse(localStorage.getItem("devlinks") || "{}");
+            const devlink = JSON.parse(
+                localStorage.getItem("devlinks") || "{}"
+            );
 
             const decoded_email = decodeURIComponent(email);
-    
+
             if (devlink[decoded_email]) {
                 return devlink[decoded_email];
             }
-
         }
-
 
         return false;
     };
