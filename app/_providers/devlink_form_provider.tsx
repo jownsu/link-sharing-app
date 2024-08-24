@@ -24,13 +24,7 @@ export const formSchema = z.object({
     first_name: z.string().min(1, "Can't be empty"),
     last_name: z.string().min(1, "Can't be empty"),
     email: z.string().min(1, "Can't be empty").email("Invalid email address"),
-    profile_picture: z
-        .any()
-        .refine((file) => file?.length > 0, "File is required")
-        .refine(
-            (file) => file?.[0]?.size <= 10 * 1024 * 1024,
-            "File size should be less than 10MB"
-        )
+    profile_picture: z.string().min(1, "Can't be empty")
 });
 
 interface Props {
@@ -38,11 +32,12 @@ interface Props {
 }
 
 const DevlinkFormProvider = ({ children }: Props) => {
-    const { saveDevLinks } = useLocalStorage();
+    const { saveDevLinks, getDevlinks } = useLocalStorage();
+   
+    const default_value = getDevlinks();
+   
     const methods = useForm<DevlinkForm>({
-        defaultValues: {
-            devlinks: []
-        },
+        defaultValues: default_value,
         resolver: zodResolver(formSchema)
     });
 

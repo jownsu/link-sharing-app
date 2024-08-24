@@ -5,9 +5,10 @@ import ImageIcon from "@/public/icons/icon-upload-image.svg";
 import { useFormContext } from "react-hook-form";
 import clsx from "clsx";
 import Image from "next/image";
+import { fileToBlob } from "@/app/_utils/helpers";
 
 const ProfilePictureForm = () => {
-    const { register, watch } = useFormContext<DevlinkForm>();
+    const { register, watch, setValue } = useFormContext<DevlinkForm>();
 
     const profile_picture = watch("profile_picture");
 
@@ -22,11 +23,11 @@ const ProfilePictureForm = () => {
                     "relative mb-[2.4rem] flex size-[19.3rem] shrink-0 cursor-pointer flex-col items-center justify-center overflow-hidden rounded-[1.2rem] bg-primary_lighter md:mr-[1.1rem]"
                 }
             >
-                {profile_picture && profile_picture[0] && (
+                {profile_picture && (
                     <>
                         <Image
                             className="relative object-cover"
-                            src={URL.createObjectURL(profile_picture[0])}
+                            src={profile_picture}
                             fill
                             alt="Profile picture of the user"
                         />
@@ -36,15 +37,14 @@ const ProfilePictureForm = () => {
 
                 <ImageIcon
                     className={clsx("relative z-30 size-[4rem] fill-primary", {
-                        ["fill-white"]: profile_picture && profile_picture[0]
+                        ["fill-white"]: profile_picture
                     })}
                 />
                 <span
                     className={clsx(
                         "relative z-30 text-[1.6rem] font-semibold text-primary",
                         {
-                            ["text-white"]:
-                                profile_picture && profile_picture[0]
+                            ["text-white"]: profile_picture
                         }
                     )}
                 >
@@ -53,6 +53,11 @@ const ProfilePictureForm = () => {
             </label>
             <input
                 {...register("profile_picture")}
+                onChange={(event) => {
+                    fileToBlob(event.target.files![0]).then((blob) => {
+                        setValue("profile_picture", blob);
+                    })
+                }}
                 id="profile_picture"
                 className="hidden"
                 type="file"

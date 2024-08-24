@@ -15,11 +15,11 @@ const PreviewHead = () => {
 
     return (
         <div className="absolute left-[50%] top-[6.3rem] flex h-[15.8rem] max-h-[15.8rem] w-full -translate-x-1/2 flex-col gap-[2rem] px-[1.2rem]">
-            {profile_picture && profile_picture[0] ? (
+            {profile_picture ? (
                 <div className="absolute left-[50%] top-0 size-[9.6rem] translate-x-[-50%] overflow-hidden rounded-full outline outline-[.4rem] outline-primary">
                     <Image
                         className="h-full w-full object-cover"
-                        src={URL.createObjectURL(profile_picture[0])}
+                        src={profile_picture}
                         height={96}
                         width={96}
                         alt="Profile picture of the user"

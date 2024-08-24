@@ -3,19 +3,20 @@ import { RegisterFormData } from "../(auth)/register/_component/RegisterForm";
 import { DevlinkForm } from "../_constants/constants";
 
 const useLocalStorage = () => {
-    const saveDevLinks = (data: DevlinkForm) => {
+    const saveDevLinks = async (data: DevlinkForm) => {
         const devlinks = JSON.parse(localStorage.getItem("devlinks") || "{}");
         const logged_in_email = localStorage.getItem("devlink_logged_in") || "";
-        const reader = new FileReader();
 
-        reader.readAsDataURL(data.profile_picture![0]);
+        devlinks[logged_in_email] = data;
+        localStorage.setItem("devlinks", JSON.stringify(devlinks));
+    }
 
-        reader.onload = () => {
-            const converted_img = reader.result;
-            data.img = converted_img as string;
-            devlinks[logged_in_email] = data;
-            localStorage.setItem("devlinks", JSON.stringify(devlinks));
-        };
+    const getDevlinks = (): DevlinkForm => {
+        const user = localStorage.getItem("devlink_logged_in") || "";
+        const devlinks = JSON.parse(localStorage.getItem("devlinks") || "{}");
+
+        const devlink = devlinks[user];
+        return devlink || {devlinks: []};
     };
 
     const registerUser = (data: RegisterFormData) => {
@@ -66,6 +67,7 @@ const useLocalStorage = () => {
 
     return {
         saveDevLinks,
+        getDevlinks,
         registerUser,
         loginUser,
         logoutUser,

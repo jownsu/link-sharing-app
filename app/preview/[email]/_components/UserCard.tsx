@@ -24,7 +24,7 @@ const UserCard = ({ email }: Props) => {
                 <div className="mx-auto mb-[2.5rem] size-[10.4rem] overflow-hidden rounded-full outline outline-[.4rem] outline-primary">
                     <Image
                         className="h-full w-full object-cover"
-                        src={devlink.img || ""}
+                        src={devlink.profile_picture || ""}
                         height={96}
                         width={96}
                         alt="Profile picture of the user"
