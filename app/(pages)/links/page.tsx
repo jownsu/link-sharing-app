@@ -1,4 +1,5 @@
-import LinkList from "./_components/LinkList";
+import dynamic from "next/dynamic";
+const LinkList = dynamic(() => import("./_components/LinkList"), { ssr: false });
 
 const LinkPage = () => {
     return (

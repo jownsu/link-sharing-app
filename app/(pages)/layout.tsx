@@ -1,8 +1,9 @@
+import dynamic from "next/dynamic";
 import NavBar from "../_components/NavBar";
 import DevlinkFormProvider from "../_providers/devlink_form_provider";
 import PhoneIllustration from "@/public/icons/illustration-phone-mockup.svg";
-import PreviewList from "../_components/PreviewList";
-import PreviewHead from "../_components/PreviewHead";
+const PreviewList = dynamic(() => import("../_components/PreviewList"), { ssr: false });
+const PreviewHead = dynamic(() => import("../_components/PreviewHead"), { ssr: false });
 
 export default function RootLayout({
     children

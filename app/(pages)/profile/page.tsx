@@ -1,6 +1,7 @@
-import ProfilePictureForm from "./_components/ProfilePictureForm";
-import ProfileDetailsForm from "./_components/ProfileDetailsForm";
-import SubmitBtn from "./_components/SubmitBtn";
+import dynamic from "next/dynamic";
+const SubmitBtn = dynamic(() => import("./_components/SubmitBtn"));
+const ProfilePictureForm = dynamic(() => import("./_components/ProfilePictureForm"), { ssr: false });
+const ProfileDetailsForm = dynamic(() => import("./_components/ProfileDetailsForm"), { ssr: false });
 
 const ProfilePage = () => {
     return (

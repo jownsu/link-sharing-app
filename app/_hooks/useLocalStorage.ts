@@ -12,11 +12,24 @@ const useLocalStorage = () => {
     };
 
     const getDevlinks = (): DevlinkForm => {
-        const user = localStorage.getItem("devlink_logged_in") || "";
-        const devlinks = JSON.parse(localStorage.getItem("devlinks") || "{}");
+        let devlink = {
+            email: "",
+            first_name: "",
+            last_name: "",
+            profile_picture: "",
+            devlinks: []
+        };
 
-        const devlink = devlinks[user];
-        return devlink || { devlinks: [] };
+        if (typeof window !== "undefined") {
+            const user = localStorage.getItem("devlink_logged_in") || "";
+            const devlinks = JSON.parse(localStorage.getItem("devlinks") || "{}");
+
+            if(devlinks[user]){
+                devlink = devlinks[user];
+            }
+        }
+
+        return devlink;
     };
 
     const registerUser = (data: RegisterFormData) => {
