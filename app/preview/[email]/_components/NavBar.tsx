@@ -30,7 +30,7 @@ const NavBar = () => {
             <div className="flex gap-[1.6rem] rounded-[1.2rem] px-[2.4rem] py-[1.6rem] md:justify-between md:bg-white">
                 <Button
                     variant={"outline"}
-                    className="flex flex-1 items-center px-0 md:flex-none md:px-[2.7rem]"
+                    className="flex flex-1 items-center justify-center px-0 md:flex-none md:px-[2.7rem]"
                     asChild
                 >
                     <Link href="/links">Back to Editor</Link>
