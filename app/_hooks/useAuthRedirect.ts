@@ -4,7 +4,7 @@ import { useRouter, usePathname } from "next/navigation";
 export function useAuthRedirect() {
     const router = useRouter();
     const current_path = usePathname();
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const is_logged_in = localStorage.getItem("devlink_logged_in");
